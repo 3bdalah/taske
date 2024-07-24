@@ -1,0 +1,73 @@
+<div class="movie-details">
+   @if (!isLoading) {
+    <div class="movie-header">
+        <h2 class="title-movie">{{movieAllDetailes.title}}</h2>
+      </div>
+    
+    
+      <div class="movie-content">
+        <div class="box-img">
+          <img
+            [src]="'https://image.tmdb.org/t/p/original/' + movieAllDetailes.poster_path"
+            alt="Movie Poster"
+            class="movie-poster"
+          />
+        </div>
+        
+        
+      </div>
+    
+      <div>
+        <button (click)="toggleFavorite()" class="btn-fav" [ngClass]="isFavorite()?'fav':''">
+            {{ isFavorite() ? 'Remove from Favorites' : 'Add to Favorites' }}
+          </button>
+
+          <div class="movie-info">
+    
+            <p>
+              <strong>Release Date:</strong>
+              {{ movieAllDetailes.release_date }}
+            </p>
+            <div class="categories">
+              
+            </div>
+            <p>
+              <strong>Overview:</strong>
+              {{ movieAllDetailes.overview }}
+            </p>
+            
+          </div>
+        @if (isLoggedIn) {
+            <h3>Comments</h3>
+        <div class="comments" *ngFor="let comment of comments; let i = index">
+          <p>{{ comment.text }}</p>
+          @if (comment.replies) {
+            <div>
+                @for (reply of comment.replies; track $index) {
+                    <div class="reply-body">
+                      <p style="margin-left: 20px;">{{ reply.text }}</p>
+                    </div>
+                }
+              </div>
+          }
+          <div class="reply">
+            
+          <textarea [(ngModel)]="newReplies[i]" class="input-reply" placeholder="reply"></textarea>
+          <button (click)="addReply(i)" class="btn-reply">Reply</button>
+          </div>
+        </div>
+        <div class="comment-input">
+            <textarea [(ngModel)]="newComment" placeholder="Add a comment" class="input"></textarea>
+        <button (click)="addComment()">Add Comment</button>
+        </div>
+        }
+      </div>
+   }
+
+</div>
+
+@if (isLoading) {
+ <h3 class="loading">Loading</h3>
+}
+ 
+  

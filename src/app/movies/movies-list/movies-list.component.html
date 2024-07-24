@@ -1,0 +1,21 @@
+<div class="filter-select">
+    <label for="movie-category">Select Category: </label>
+    <select id="movie-category" (change)="onCategoryChange($event)" class="form-select">
+      <option value="popular">Top Movies</option>
+      <option value="upcoming">Upcoming Movies</option>
+      <option value="now_playing">Now Playing</option>
+    </select>
+  </div>
+ @if(!isLoading){
+  <div class="container">
+    @for (movieDataformList of moviesList; track $index) {
+      <div class="card-movie" tabindex="0" >
+        <app-movie-card [movie]="movieDataformList"></app-movie-card>
+      </div> 
+    }
+  </div>
+ }
+  @if (isLoading) {
+    <h3 class="loading">Loading</h3>
+   }
+    
