@@ -18,10 +18,12 @@
       </div>
     
       <div>
+      @if(isLoggedIn){
         <button (click)="toggleFavorite()" class="btn-fav" [ngClass]="isFavorite()?'fav':''">
-            {{ isFavorite() ? 'Remove from Favorites' : 'Add to Favorites' }}
-          </button>
+          {{ isFavorite() ? 'Remove from Favorites' : 'Add to Favorites' }}
+        </button>
 
+      }
           <div class="movie-info">
     
             <p>

@@ -1,7 +1,7 @@
 
   /* Card styling */
   .card-body{
-    height:300px !important;
+    height:250px !important;
   }
     /* Image container */
     .box-img {
@@ -50,7 +50,7 @@
     
     /* Card content */
     .content-card-movie {
-      padding: 15px;
+      padding: 5px;
       /* height:50px; */
     }
     
